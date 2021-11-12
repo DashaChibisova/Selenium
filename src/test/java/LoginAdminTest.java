@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class YandexPageTest {
+public class LoginAdminTest {
     public WebDriver driver;
     public WebDriverWait wait;
 
@@ -19,12 +19,13 @@ public class YandexPageTest {
     }
 
     @Test
-    public void yandexSearchTest() {
+    public void loginAdminTest() {
 
-        driver.get("https://yandex.ru/");
-        driver.findElement(By.id("text")).sendKeys("все получится!");
-        driver.findElement(By.className("search2__button")).click();
-        driver.findElement(By.className("UniSearchHeader-Title-Text")).click();
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.xpath(".//input[@name='username']")).sendKeys("admin");
+        driver.findElement(By.xpath(".//input[@name='password']")).sendKeys("admin");
+        driver.findElement(By.xpath(".//input[@type='checkbox']")).click();
+        driver.findElement(By.xpath(".//button[@name='login']")).click();
 
     }
 
