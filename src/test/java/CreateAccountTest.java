@@ -23,17 +23,11 @@ public class CreateAccountTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-//      WebDriverManager.iedriver().setup();
-//      driver = new InternetExplorerDriver();
-//        WebDriverManager.firefoxdriver().setup();
-//        driver = new FirefoxDriver();
-
         wait = new WebDriverWait(driver, 10);
         driver.get("http://localhost/litecart/en/");
     }
 
-
-    //д)-main
+    //11-задание
     @Test
     public void createNewAccountTest() {
         driver.findElement(By.xpath("//*[@id = 'box-account-login']" +
@@ -42,7 +36,6 @@ public class CreateAccountTest {
         DataNewAccount newAccount = new DataNewAccount("dasha", "Dasha", "Shilo",
                 "11111", "Raif", "Chib", "Address2", "Moscow",
                 "89552228635", "123456");
-
 
         driver.findElement(By.name("tax_id")).sendKeys(newAccount.getTaxID());
         driver.findElement(By.name("firstname")).sendKeys(newAccount.getFirstName());
@@ -60,25 +53,25 @@ public class CreateAccountTest {
 
         List<WebElement> countryList = driver.findElements(By.xpath("//li[@class = 'select2-results__option']"));
 
-        for (WebElement country : countryList)
+        for (WebElement country : countryList) {
             if ("United States".equals(country.getText())) {
                 country.click();
-                return;
+                break;
             }
+        }
         driver.findElement(By.xpath("//button[contains(text(),'Create Account')]")).click();
         driver.findElement(By.xpath("//*[@id=\"footer\"]//a[@href='http://localhost/litecart/en/logout']")).click();
-
         driver.findElement(By.xpath("//*[@name = 'login_form']//*[@name = 'email']"))
                 .sendKeys(newAccount.getEmail());
         driver.findElement(By.xpath("//*[@name = 'login_form']//*[@name = 'password']"))
                 .sendKeys(newAccount.getDesiredPassword());
-           driver.findElement(By.xpath("//*[@id=\"footer\"]//a[@href='http://localhost/litecart/en/logout']")).click();
+        driver.findElement(By.xpath("//*[@name = 'login']")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]//a[@href='http://localhost/litecart/en/logout']")).click();
 
     }
 
-
     @After
-    public  void tearDown() {
+    public void tearDown() {
         driver.quit();
     }
 }

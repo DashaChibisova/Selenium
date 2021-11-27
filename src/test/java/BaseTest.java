@@ -1,7 +1,13 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BaseTest {
+    private WebDriver driver;
+
 
     public List<Integer> color(String color) {
         String[] colors = color.replaceAll("rgba", "")
@@ -30,6 +36,7 @@ public class BaseTest {
     public boolean crossOut(String linethrough) {
         return linethrough.equals("line-through");
     }
+
 }
 
 
