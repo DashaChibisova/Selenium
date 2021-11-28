@@ -35,7 +35,7 @@ public class CreateAccountTest {
                 .click();
         DataNewAccount newAccount = new DataNewAccount("dasha", "Dasha", "Shilo",
                 "11111", "Raif", "Chib", "Address2", "Moscow",
-                "89552228635", "123456");
+                "89552228635", "12345");
 
         driver.findElement(By.name("tax_id")).sendKeys(newAccount.getTaxID());
         driver.findElement(By.name("firstname")).sendKeys(newAccount.getFirstName());
