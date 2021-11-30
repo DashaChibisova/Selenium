@@ -53,7 +53,8 @@ public class MainPageTest {
         }
         driver.findElement(By.xpath("//*[@id= 'cart']//*[contains(text(), 'Checkout')]")).click();
 
-        for (int i = 0; i < 3; i++) {
+        int countProducts = driver.findElements(By.xpath("//*[@class = 'shortcuts']/*[@class = 'shortcut']")).size();
+        for (int i = 0; i < countProducts; i++) {
             WebElement table = driver.findElement(By.cssSelector(".dataTable"));
             driver.findElement(By.name("remove_cart_item")).click();
             wait.until(ExpectedConditions.stalenessOf(table));
