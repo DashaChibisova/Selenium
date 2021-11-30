@@ -1,16 +1,15 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class CountriesPageTest {
     public static WebDriver driver;
@@ -75,8 +74,38 @@ public class CountriesPageTest {
         }
     }
 
+    //14-задание
+    @Test
+    public void checkWhenEditingCountryLinksOpenInNewWindowTest(){
+        driver.findElement(By.cssSelector("a[href*='code=AL'][ title = 'Edit']")).click();
+        List<WebElement> links = driver.findElements(By.cssSelector("form[method='post'] [target='_blank']"));
+        for (WebElement link : links)
+        {
+            String current = driver.getWindowHandle();
+            Set<String> oldWindows = driver.getWindowHandles();
+            link.click();
+            String newWindow = wait.until(thereIsWindowOtherThan(oldWindows));
+            driver.switchTo().window(newWindow);
+            driver.close();
+            driver.switchTo().window(current);
+        }
+
+    }
+
     @AfterClass
     public static void tearDown() {
         driver.quit();
+    }
+
+
+    public ExpectedCondition<String> thereIsWindowOtherThan(Set<String> oldWindows){
+        return new ExpectedCondition<String>() {
+            @Override
+            public String apply(WebDriver d) {
+                Set<String> windowHandles = d.getWindowHandles();
+                windowHandles.removeAll(oldWindows);
+                return windowHandles.size()>0 ? windowHandles.iterator().next() : null;
+            }
+        };
     }
 }
