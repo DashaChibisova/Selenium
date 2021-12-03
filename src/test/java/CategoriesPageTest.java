@@ -18,12 +18,12 @@ public class CategoriesPageTest {
 
     @BeforeClass
     public static void setUp() {
-//      WebDriverManager.chromedriver().setup();
-//      driver = new ChromeDriver();
+      WebDriverManager.chromedriver().setup();
+      driver = new ChromeDriver();
 //      WebDriverManager.iedriver().setup();
 //      driver = new InternetExplorerDriver();
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+//        WebDriverManager.firefoxdriver().setup();
+//        driver = new FirefoxDriver();
 
         wait = new WebDriverWait(driver, 10);
         driver.get("http://localhost/litecart/en/");
