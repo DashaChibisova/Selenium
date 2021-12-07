@@ -10,7 +10,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CategoriesPageTest {
+public class CategoriesTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
     BaseTest testOnMainPagePrice = new BaseTest();

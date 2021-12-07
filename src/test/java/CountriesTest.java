@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class CountriesPageTest {
+public class CountriesTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
 

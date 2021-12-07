@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class YandexPageTest {
+public class YandexTest {
     public WebDriver driver;
     public WebDriverWait wait;
 

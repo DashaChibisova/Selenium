@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class ProductMainPageTest {
+public class ProductMainTest {
 
     public static WebDriver driver;
     public static WebDriverWait wait;

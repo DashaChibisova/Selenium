@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class AdminPageTest {
+public class AdminTest {
     public WebDriver driver;
     public WebDriverWait wait;
     public String string = RandomStringUtils.randomAlphabetic(10);

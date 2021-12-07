@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class MainPageTest {
+public class MainTest {
     public WebDriver driver;
     public WebDriverWait wait;
 
@@ -53,7 +53,7 @@ public class MainPageTest {
         }
         driver.findElement(By.xpath("//*[@id= 'cart']//*[contains(text(), 'Checkout')]")).click();
 
-        int countProducts = driver.findElements(By.xpath("//*[@class = 'shortcuts']/*[@class = 'shortcut']")).size();
+        int countProducts = driver.findElements(By.xpath("//*[@class = 'image-wrapper shadow']")).size();
         for (int i = 0; i < countProducts; i++) {
             WebElement table = driver.findElement(By.cssSelector(".dataTable"));
             driver.findElement(By.name("remove_cart_item")).click();
@@ -63,8 +63,8 @@ public class MainPageTest {
     }
 
 
-    @After
-    public void stop() {
-        driver.quit();
-    }
+//    @After
+//    public void stop() {
+//        driver.quit();
+//    }
 }

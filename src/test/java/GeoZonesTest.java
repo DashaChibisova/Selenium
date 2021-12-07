@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GeoZonesPageTest {
+public class GeoZonesTest {
     public WebDriver driver;
     public WebDriverWait wait;
 
