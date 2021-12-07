@@ -12,11 +12,6 @@ import java.util.List;
 
 public class ProductPage extends Page{
 
-    public ProductPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
     @FindBy(xpath ="//*[@name = 'options[Size]']")
     public List<WebElement> fieldSize;
 
@@ -29,7 +24,10 @@ public class ProductPage extends Page{
     @FindBy(xpath ="//a[@href='/litecart/']")
     public WebElement homePage;
 
-
+    public ProductPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     public ProductPage addNewProduct(){
         if (fieldSize.size() >0) {
@@ -46,6 +44,4 @@ public class ProductPage extends Page{
         homePage.click();
         return new MainPage(driver);
     }
-
-
 }
