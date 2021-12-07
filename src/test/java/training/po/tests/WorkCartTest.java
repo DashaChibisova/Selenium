@@ -12,7 +12,7 @@ public class WorkCartTest extends TestBase {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 3; i++) {
             mainPage.chooseProduct().addNewProduct().returnOnMainPage();
         }
 
