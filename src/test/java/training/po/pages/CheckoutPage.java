@@ -30,10 +30,10 @@ public class CheckoutPage extends Page {
     }
 
     public CheckoutPage removeFromCart() {
-        for (int i = 0; i < products.size()+1; i++) {
-            WebElement table = tableOrderSummary;
+        int amount = products.size();
+        for (int i = 0; i < amount; i++) {
             buttonRemove.click();
-            wait.until(ExpectedConditions.stalenessOf(table));
+            wait.until(ExpectedConditions.stalenessOf(tableOrderSummary));
         }
         return this;
     }
