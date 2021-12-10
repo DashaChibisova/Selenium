@@ -1,5 +1,6 @@
 package ru.stqa.cucumber.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -33,7 +34,8 @@ public class CheckoutPage extends Page {
         int amount = products.size();
         for (int i = 0; i < amount; i++) {
             buttonRemove.click();
-            wait.until(ExpectedConditions.stalenessOf(tableOrderSummary));
+            wait.until(ExpectedConditions.numberOfElementsToBe(
+                    By.xpath("//*[@class = 'image-wrapper shadow']"), amount - i - 1));
         }
         return this;
     }

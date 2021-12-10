@@ -2,32 +2,27 @@ package ru.stqa.cucumber.tests;
 
 import io.cucumber.java8.En;
 import org.junit.Assert;
-import ru.stqa.cucumber.pages.*;
+import ru.stqa.cucumber.pages.CheckoutPage;
+import ru.stqa.cucumber.pages.CucumberTestBase;
+import ru.stqa.cucumber.pages.MainPage;
 
-public class MyStepdefs extends CucumberTestBase  implements En{
 
+public class MyStepdefs extends CucumberTestBase implements En {
     MainPage mainPage;
-    ProductPage productPage ;
     CheckoutPage checkoutPage;
 
     public MyStepdefs() {
-
         Given("User is on main page", () -> {
+           });
+        When("User add the selected products to the cart '{int}' times", (Integer amount) -> {
             mainPage= new MainPage(driver);
-            mainPage.open();});
-        When("User  select a product click on it and", () -> {
-            mainPage.chooseProduct();});
-        And("add it to the cart on the product page", () -> {
-            productPage = new ProductPage(driver);
-            productPage.addNewProduct();});
-        And("returns to the main page", () -> {
-            productPage.returnOnMainPage();});
-        And("goes to Checkout", () -> {
-            mainPage.gotoCheckout();});
-        And("user removes all items from the shopping cart//действия", () -> {
-            checkoutPage = new CheckoutPage(driver);
-            checkoutPage.removeFromCart();});
-        Then("Cart should be empty  a//проверки", () -> {
+            mainPage.addProductInCart(amount);
+        });
+        And("user removes all items from the shopping cart", () -> {
+             checkoutPage = mainPage.gotoCheckout().removeFromCart();
+
+        });
+        Then("Cart should be empty", () -> {
             Assert.assertTrue(checkoutPage.emptyCart());
         });
     }
