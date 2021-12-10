@@ -1,4 +1,4 @@
-package training.po.pages;
+package ru.stqa.cucumber.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,5 +35,11 @@ public class MainPage extends Page {
         checkout.click();
         wait.until(ExpectedConditions.titleContains("Checkout"));
         return new CheckoutPage(driver);
+    }
+
+    public void addProductInCart(int amount){
+        for (int i = 0; i < amount; i++) {
+            open().chooseProduct().addNewProduct().returnOnMainPage();
+        }
     }
 }

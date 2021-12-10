@@ -1,4 +1,4 @@
-package training.po.pages;
+package ru.stqa.cucumber.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
